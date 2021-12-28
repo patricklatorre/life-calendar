@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
 /*** The new CSS Reset - version 1.4.4 (last updated 22.12.2021) ***/
 
 /*
@@ -58,10 +60,82 @@ textarea {
 
 /**** LIFE CALENDAR STYLES ****/
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Lora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   background-color: #EAEBED;
   color: #28383e;
+  font-size: 1.1em;
+
+  padding-top: 2rem;
 }
 
+.bday-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 0.2rem;
+  font-size: 1em;
+  opacity: 100%;
+  margin-bottom: 1rem;
+}
+.fields > h2 {
+  font-size: 0.8em;
+}
+.fields > input {
+  border-bottom: 1px solid #28383e44;
+}
+
+main {
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.8em;
+}
+
+.cells {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.cell {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+
+  margin: 0;
+  padding: 0;
+
+  border: 1px solid #28383e;
+  border-radius: 4rem;
+
+  opacity: 30%;
+}
+
+.cell.year {
+  border-color: #446DF6;
+}
+.cell.done.year {
+  background-color: #446DF6;
+}
+.cell.done {
+  background: #28383e;
+}
 
