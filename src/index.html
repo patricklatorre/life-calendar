@@ -18,6 +18,10 @@
       </div>
     </div>
 
+    <div class="description" v-if="birthday !== undefined">
+      <h2>90 years in weeks.</h2>
+    </div>
+
     <div class="legend" v-if="birthday !== undefined">
       <div class="legend-item">
         <div class="cell"></div>
@@ -31,6 +35,9 @@
         <div class="cell done year"></div>
         <span>= End of year</span>
       </div>
+      <!-- <div class="legend-item">
+        <span>Total: 90 years in weeks</span>
+      </div> -->
     </div>
 
     <div class="cells" v-if="birthday !== undefined">
