@@ -1,0 +1,2 @@
+const app=new Vue({el:"#app",data:{birthday:void 0},computed:{remainingWeeks(){return 4693-this.weeksFromBirthday()}},methods:{weeksFromBirthday(){if(void 0===this.birthday)return 0;const e=luxon.DateTime.fromISO(this.birthday.toString()),t=luxon.DateTime.now(),r=luxon.Interval.fromDateTimes(e,t).length("weeks");return Math.floor(r)},getCellClass(e){let t="cell";return e<=this.weeksFromBirthday()&&(t+=" done"),e%52==0&&(t+=" year"),t}}});
+//# sourceMappingURL=index.696fabd3.js.map
