@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#EAEBED">
   <link rel="stylesheet" href="./css/styles.css">
   <title>In weeks.</title>
 </head>
@@ -14,15 +15,22 @@
     <div class="bday-group">
       <div class="fields">
         <h2>Birthday</h2>
-        <input type="date" name="bday" class="form-control" id="bday-field" v-model="birthday">
+        <input
+          type="date" 
+          name="bday"
+          class="form-control"
+          id="bday-field"
+          v-model="birthday"
+          @change="onBirthdayChange()"
+        >
       </div>
     </div>
 
-    <div class="description" v-if="birthday !== undefined">
+    <div class="description" v-if="cssClasses !== undefined">
       <h2>90 years in weeks.</h2>
     </div>
 
-    <div class="legend" v-if="birthday !== undefined">
+    <div class="legend" v-if="cssClasses !== undefined">
       <div class="legend-item">
         <div class="cell"></div>
         <span>= 1 week</span>
@@ -35,19 +43,17 @@
         <div class="cell done year"></div>
         <span>= End of year</span>
       </div>
-      <!-- <div class="legend-item">
-        <span>Total: 90 years in weeks</span>
-      </div> -->
+
     </div>
 
-    <div class="cells" v-if="birthday !== undefined">
-      <div v-for="index in 4693" :class="getCellClass(index)"></div>
+    <div class="cells" v-if="cssClasses !== undefined">
+      <div v-for="cssClass in cssClasses" :class="cssClass"></div>
     </div>
   </main>
 
   
-  <!-- development version, includes helpful console warnings -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <!-- VUE: Production version -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 
   <!-- Luxon -->
   <script src="./js/luxon.js"></script>

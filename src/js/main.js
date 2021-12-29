@@ -3,42 +3,46 @@ const app = new Vue({
   
   data: {
     birthday: undefined,
-  },
-  
-  computed: {
-    remainingWeeks() {
-      const weeksDone = this.weeksFromBirthday();
-      return 4693 - weeksDone; // ~4693 weeks in 90 years
-    },
+    cssClasses: undefined,
   },
 
   methods: {
     weeksFromBirthday() {
-      if (this.birthday === undefined) {
-        return 0;
-      }
+      if (this.birthday === undefined) { return 0; }
 
-      const birthday = luxon.DateTime.fromISO(this.birthday.toString());
-      const now = luxon.DateTime.now();
-      
-      const interval = luxon.Interval.fromDateTimes(birthday, now);
-      const weeks = interval.length('weeks');
+      const birthday  = luxon.DateTime.fromISO(this.birthday.toString());
+      const now       = luxon.DateTime.now();
+      const weeks     = luxon.Interval.fromDateTimes(birthday, now)
+                                      .length('weeks');
 
       return Math.floor(weeks);
     },
 
-    getCellClass(index) {
-      let result = 'cell';
+    getAllCssClasses() {
+      const totalWeeks = 4693; // 90 years
+      const weeksFromBday = this.weeksFromBirthday();
+      const cssClasses = [];
+      
+      for (let i = 1; i <= totalWeeks; i++) {
+        let cssClass = 'cell';
+        if (i <= weeksFromBday) { cssClass += ' done'; }
+        if (i % 52 === 0)       { cssClass += ' year'; }
 
-      if (index <= this.weeksFromBirthday()) {
-        result += ' done';
+        cssClasses.push(cssClass);
       }
 
-      if (index % 52 === 0) {
-        result += ' year';
-      }
+      return cssClasses;
+    },
 
-      return result;
+    onBirthdayChange() {
+      // Cache CSS classes
+      this.cssClasses = this.getAllCssClasses();
+
+      // Update title
+      const birthday  = luxon.DateTime.fromISO(this.birthday.toString())
+                                      .toLocaleString(luxon.DateTime.DATE_MED);
+      
+      document.title = `📅 ${birthday}`;
     },
   },
 });
