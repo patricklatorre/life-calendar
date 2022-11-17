@@ -21,11 +21,13 @@ const app = new Vue({
     getAllCssClasses() {
       const totalWeeks = 4693; // 90 years
       const weeksFromBday = this.weeksFromBirthday();
+      const weeksSleeping = weeksFromBday / 3;
       const cssClasses = [];
       
       for (let i = 1; i <= totalWeeks; i++) {
         let cssClass = 'cell';
         if (i <= weeksFromBday) { cssClass += ' done'; }
+        if (i <= weeksSleeping) { cssClass += ' sleep' }
         if (i % 52 === 0)       { cssClass += ' year'; }
 
         cssClasses.push(cssClass);
